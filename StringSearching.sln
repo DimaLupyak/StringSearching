@@ -5,7 +5,11 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleView", "ConsoleView\ConsoleView.csproj", "{4B551810-07C4-41CD-9474-30563A313438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringSearcherBase", "StringSearcherBase\StringSearcherBase.csproj", "{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringSearchBase", "StringSearcherBase\StringSearchBase.csproj", "{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmKmp", "AlgorithmKmp\AlgorithmKmp.csproj", "{35216867-98AE-43B1-8CFC-8BC3E0308816}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmZ", "AlgorithmZ\AlgorithmZ.csproj", "{81B39320-D861-4DB3-8767-CFB597ACEA13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35216867-98AE-43B1-8CFC-8BC3E0308816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35216867-98AE-43B1-8CFC-8BC3E0308816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35216867-98AE-43B1-8CFC-8BC3E0308816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35216867-98AE-43B1-8CFC-8BC3E0308816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81B39320-D861-4DB3-8767-CFB597ACEA13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81B39320-D861-4DB3-8767-CFB597ACEA13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81B39320-D861-4DB3-8767-CFB597ACEA13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81B39320-D861-4DB3-8767-CFB597ACEA13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

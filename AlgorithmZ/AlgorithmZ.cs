@@ -10,7 +10,7 @@ namespace StringSearch
     // then requires the int[] computed by Z to count prefixes.
     // Also implements IPrefixCounter<char[]> if users wish to 
     // count prefixes directly from s (rather than z.)
-    public class AlgorithmZ : ISearchAlgorithm<int[]>, IPrefixCounter<int[]>, IPrefixCounter<char[]>
+    public class AlgorithmZ : ISearchAlgorithm<int[]>
     {
         private static T[] Concat<T>(T[] t1, T[] t2)
         {
@@ -22,34 +22,9 @@ namespace StringSearch
             Array.Copy(t2, 0, s, n1, n2);
 
             return s;
-        }
-
-        #region IPrefixCounter
-
-        public int[] CountPrefixes(int[] z)
-        {
-            return CountPrefixLengths(z);
-        }
-
-        public int[] CountPrefixes(char[] s)
-        {
-            return CountPrefixLengths(Z(s));
-        }
-
-        #endregion
+        }        
 
         #region ISearchAlgorithm
-
-        public string Name
-        {
-            get { return "Z-Algorithm"; }
-        }
-
-        public int[] PreProcess(char[] s)
-        {
-            return Z(s);
-        }
-
         public int Search(char[] s, char[] key)
         {
             int n = s.Length;
@@ -98,33 +73,8 @@ namespace StringSearch
         #endregion
 
         #region Implementation
-
-        private static int[] CountPrefixLengths(int[] z)
-        {
-            int n = z.Length;
-            var prefixCount = new int[n + 1]; // indexed by length
-            Array.Clear(prefixCount, 0, n + 1);
-
-            // Each z[i] is the length of longest common prefix between S and S[i..n]
-            // Since S[i..n] matches prefix of length z[i], increment count for each z[i].
-            for (int i = 0; i < n; i++)
-            {
-                // Count the longest prefix-substr occurence; shorter occurences counted below.
-                prefixCount[z[i]]++;
-            }
-            // In descending order: if prefix S[0..i] occurs N times,
-            // the sub-prefix S[0 .. i-1] must also occur >= N times.
-            for (int i = n - 1; i > 0; i--)
-            {
-                prefixCount[i - 1] += prefixCount[i];
-                prefixCount[i]++; // Count prefix itself
-            }
-            prefixCount[0] = 0;   // Clear incorrect count for the empty prefix
-            prefixCount[n] = 1;   // We haven't yet counted the complete string
-            return prefixCount;
-        }
-
-        private static int[] Z(char[] s)
+               
+        private int[] Z(char[] s)
         {
             int n = s.Length;
             var z = new int[n];

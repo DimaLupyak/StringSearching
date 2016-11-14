@@ -11,8 +11,8 @@ namespace ConsoleView
     {
         static void Main(string[] args)
         {
-            var a = new AlgorithmKmp();
-            Console.WriteLine(a.Search("a sasf fas".ToCharArray(), "as".ToCharArray()));
+            var a = new AlgorithmZ();
+            Console.WriteLine(a.SearchAll("a s asf fas".ToCharArray(), " as".ToCharArray()).IntArrayToString());
             Console.ReadKey();
         }
 

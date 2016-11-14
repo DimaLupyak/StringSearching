@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}</ProjectGuid>
+    <ProjectGuid>{35216867-98AE-43B1-8CFC-8BC3E0308816}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StringSearcherBase</RootNamespace>
-    <AssemblyName>StringSearcherBase</AssemblyName>
+    <RootNamespace>AlgorithmKmp</RootNamespace>
+    <AssemblyName>AlgorithmKmp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmKmp.cs" />
-    <Compile Include="AlgorithmZ.cs" />
-    <Compile Include="IPrefixCounter.cs" />
-    <Compile Include="ISearchAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StringSearcherBase\StringSearchBase.csproj">
+      <Project>{49da10c6-e3a7-4a28-92f4-2bab0d46238e}</Project>
+      <Name>StringSearchBase</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
