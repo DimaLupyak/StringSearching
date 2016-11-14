@@ -43,9 +43,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\StringSearcherBase\StringSearchBase.csproj">
       <Project>{49da10c6-e3a7-4a28-92f4-2bab0d46238e}</Project>
       <Name>StringSearchBase</Name>

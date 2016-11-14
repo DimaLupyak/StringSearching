@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace StringSearch
 {
     // Algorithm KMP will have computed an int[] after pre-procesing,
     // but requires the entire text (char[] s) to count prefix occurences.
     // Pre-processing KMP and then counting from result int[] would be O(n^2)
+
+    [Description("Knuth–Morris–Pratt")]
+    [StringSearchAlgorithm("Knuth–Morris–Pratt algorithm", Version = "1.0")]
     public class AlgorithmKmp : ISearchAlgorithm<int[]>
-    {       
-        #region ISearchAlgorithm  
+    {
+        #region ISearchAlgorithm
         public int Search(char[] s, char[] key)
         {
             int n = s.Length;
@@ -20,16 +24,16 @@ namespace StringSearch
 
             int i = 0; // position of current character in key
             int j = 0; // beginning of current match in S
-            while(i < n)
+            while (i < n)
             {
-                if(s[i] == key[j])
+                if (s[i] == key[j])
                 {
                     j++;
                     i++;
                 }
-                if(j == m) { return i - m; }
+                if (j == m) { return i - m; }
                 else if (i < n && s[i] != key[j]) // mismatch after j matches
-                {  
+                {
                     // Skip lps[j - 1] chars; they will match
                     if (j > 0) { j = pmt[j - 1]; }
                     else i++;

@@ -11,8 +11,10 @@ namespace ConsoleView
     {
         static void Main(string[] args)
         {
-            var a = new AlgorithmZ();
-            Console.WriteLine(a.SearchAll("a s asf fas".ToCharArray(), " as".ToCharArray()).IntArrayToString());
+            char[] s = "as F  a sf asf fas".ToLower().Replace(" ", "").ToCharArray();
+            char[] key = "F   as".ToLower().Replace(" ","").ToCharArray();
+            var searcher = new AlgorithmKmp();
+            Console.WriteLine("as F  a sf asf fas".IndexOf("a s"));
             Console.ReadKey();
         }
 
