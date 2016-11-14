@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleView", "ConsoleView\ConsoleView.csproj", "{4B551810-07C4-41CD-9474-30563A313438}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringSearcherBase", "StringSearcherBase\StringSearcherBase.csproj", "{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4B551810-07C4-41CD-9474-30563A313438}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B551810-07C4-41CD-9474-30563A313438}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B551810-07C4-41CD-9474-30563A313438}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49DA10C6-E3A7-4A28-92F4-2BAB0D46238E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
