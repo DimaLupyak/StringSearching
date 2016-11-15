@@ -53,7 +53,7 @@ namespace StringSearch
 
         virtual public IEnumerable<ResultItem> SearchAll(string text, string pattern)
         {
-            var result = new List<ResultItem>();
+            //var result = new List<ResultItem>();
             bool finish = false;
             int lastPatternPosition = 0;
             while (!finish)
@@ -61,7 +61,8 @@ namespace StringSearch
                 ResultItem resultItem = Search(text.Substring(lastPatternPosition), pattern);
                 if (resultItem != null)
                 {
-                    result.Add(new ResultItem(resultItem.Index + lastPatternPosition, resultItem.Value));
+                    //result.Add(new ResultItem(resultItem.Index + lastPatternPosition, resultItem.Value));
+                    yield return new ResultItem(resultItem.Index + lastPatternPosition, resultItem.Value);
                     lastPatternPosition += resultItem.Index + 1;
                 }
                 else
@@ -69,7 +70,7 @@ namespace StringSearch
                     finish = true;
                 }
             }
-            return result;
+            //return result;
         }
     }
 }

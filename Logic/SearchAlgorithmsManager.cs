@@ -1,6 +1,7 @@
 ﻿using StringSearch;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,7 +13,7 @@ namespace Logic
 {
     public class SearchAlgorithmsManager
     {
-        private Dictionary<string, ISearchAlgorithm> algorithms;     
+        private List<SearchAlgorithmItem> algorithms;     
         
         #region Singleton
 
@@ -35,7 +36,7 @@ namespace Logic
 
         private SearchAlgorithmsManager()
         {
-            algorithms = new Dictionary<string, ISearchAlgorithm>();
+            algorithms = new List<SearchAlgorithmItem>();
             
                 string[] dllFileNames = null;
                 if (Directory.Exists(@"Plugins"))
@@ -49,27 +50,22 @@ namespace Logic
 
                     foreach (Type algorithmType in algorithmTypes)
                     {
-                        ISearchAlgorithm iSearchAlgorithm = assembly.CreateInstance(algorithmType.FullName, true) as ISearchAlgorithm;
-                        string algorithmName = (algorithmType.GetCustomAttribute(typeof(StringSearchAlgorithmAttribute)) as StringSearchAlgorithmAttribute).Name;
-                        algorithms.Add(algorithmName, iSearchAlgorithm);
+                        SearchAlgorithmItem newItem = new SearchAlgorithmItem();
+                        var attribure = algorithmType.GetCustomAttribute(typeof(StringSearchAlgorithmAttribute)) as StringSearchAlgorithmAttribute;
+                        var descriptionAttribure = algorithmType.GetCustomAttribute(typeof(DescriptionAttribute)) as DescriptionAttribute;
+                        newItem.Algorithm = assembly.CreateInstance(algorithmType.FullName, true) as ISearchAlgorithm;
+                        newItem.Name = attribure.Name;
+                        newItem.Version = attribure.Version;
+                        newItem.Description = descriptionAttribure.Description;
+                        algorithms.Add(newItem);
                     }
                 }
               
         }
 
-        public IEnumerable<ISearchAlgorithm> GetAll()
+        public List<SearchAlgorithmItem> GetAll()
         {
-            return algorithms.Values;
-        }
-
-        public IEnumerable<string> GetNames()
-        {
-            return algorithms.Keys;
-        }
-
-        public ISearchAlgorithm Get(string name)
-        {
-            return algorithms.Keys.Contains(name) ? algorithms[name] : null;
+            return algorithms;
         }
     }
 }
