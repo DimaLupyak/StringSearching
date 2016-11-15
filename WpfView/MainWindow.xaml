@@ -3,9 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:WpfView"
         Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
     
-    <StackPanel>
-        <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Open">
+                    <MenuItem Header="From File" Command="{Binding LoadTextFromFileCommand}" />                    
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" Command="{Binding CloseWindowCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel>
+            <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <TextBox Text="{Binding Pattern, UpdateSourceTrigger=PropertyChanged}"></TextBox>
         <ScrollViewer>
             <ItemsControl ItemsSource="{Binding SearchControlViewModels}">
@@ -17,4 +28,5 @@
             </ItemsControl>
         </ScrollViewer>
     </StackPanel>
+    </DockPanel>
 </Window>
