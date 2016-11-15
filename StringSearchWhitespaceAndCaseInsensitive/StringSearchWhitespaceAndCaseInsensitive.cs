@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 namespace StringSearch
 {
-    public class StringSearchWhitespaceAndCaseInsensitive : StringSearchWhitespaceInsensitive
+    [Description("Returns similar strings. Whitespaces and Case insensitive")]
+    [StringSearchAlgorithm("Whitespaces and Case insensitive", Version = "1.2")]
+    public class StringSearchWhitespaceAndCaseInsensitive : ASearchAlgorithm
     {
         override protected string GetNormalized(string str)
         {
-            return str.ToLower().Replace(" ", "");
+            return str.ToLower().Replace(Ignore, "");
+        }
+
+        protected override string Ignore
+        {
+            get { return " "; }
         }
     }
 }

@@ -7,8 +7,8 @@ using System.ComponentModel;
 
 namespace StringSearch
 {
-    [Description("Knuth–Morris–Pratt, Identical string searching")]
-    [StringSearchAlgorithm("Knuth–Morris–Pratt algorithm", Version = "1.0")]
+    [Description("Knuth–Morris–Pratt algorithm. Returns identical strings")]
+    [StringSearchAlgorithm("Knuth–Morris–Pratt algorithm", Version = "2.0")]
     public class AlgorithmKmp : ISearchAlgorithm
     {
         #region ISearchAlgorithm

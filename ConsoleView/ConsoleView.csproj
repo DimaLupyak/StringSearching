@@ -48,29 +48,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlgorithmKmp\AlgorithmKmp.csproj">
-      <Project>{35216867-98ae-43b1-8cfc-8bc3e0308816}</Project>
-      <Name>AlgorithmKmp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StringSearchCaseInsensitive\StringSearchCaseInsensitive.csproj">
-      <Project>{f1ee2d3c-7050-4960-be95-c0ed24a6d73b}</Project>
-      <Name>StringSearchCaseInsensitive</Name>
+    <ProjectReference Include="..\Logic\Logic.csproj">
+      <Project>{25d05bd2-ae2a-4eeb-a0be-e6e91665b250}</Project>
+      <Name>Logic</Name>
     </ProjectReference>
     <ProjectReference Include="..\StringSearcherBase\StringSearchBase.csproj">
       <Project>{49da10c6-e3a7-4a28-92f4-2bab0d46238e}</Project>
       <Name>StringSearchBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StringSearchIdentical\StringSearchIdentical.csproj">
-      <Project>{f3146457-8899-404d-bed1-53e7707418ce}</Project>
-      <Name>StringSearchIdentical</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StringSearchWhitespaceAndCaseInsensitive\StringSearchWhitespaceAndCaseInsensitive.csproj">
-      <Project>{203c78d1-939d-4755-8303-32b053ccb70d}</Project>
-      <Name>StringSearchWhitespaceAndCaseInsensitive</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StringSearchWhitespaceInsensitive\StringSearchWhitespaceInsensitive.csproj">
-      <Project>{cf80493a-a1f3-4747-accb-24a23e76c6ca}</Project>
-      <Name>StringSearchWhitespaceInsensitive</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

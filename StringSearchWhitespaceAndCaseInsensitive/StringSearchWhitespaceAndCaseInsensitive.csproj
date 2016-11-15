@@ -47,10 +47,6 @@
       <Project>{49da10c6-e3a7-4a28-92f4-2bab0d46238e}</Project>
       <Name>StringSearchBase</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StringSearchWhitespaceInsensitive\StringSearchWhitespaceInsensitive.csproj">
-      <Project>{cf80493a-a1f3-4747-accb-24a23e76c6ca}</Project>
-      <Name>StringSearchWhitespaceInsensitive</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

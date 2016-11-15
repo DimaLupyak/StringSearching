@@ -1,9 +1,7 @@
-﻿using StringSearch;
+﻿using Logic;
+using StringSearch;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleView
 {
@@ -11,10 +9,13 @@ namespace ConsoleView
     {
         static void Main(string[] args)
         {
-            string text = "    1a    21   212";
-            string pattern = "1 A 2";
-            ISearchAlgorithm searcher = new StringSearchWhitespaceAndCaseInsensitive();
-            WriteResult(searcher.SearchAll(text, pattern));
+            string text = "1aeee2 1A2 1  a 2  1  A2";
+            string pattern = "1y2";
+            foreach (var searcher in SearchAlgorithmsManager.Instance.GetAll())
+            {
+                Console.WriteLine("Type: " + searcher.GetType());
+                WriteResult(searcher.SearchAll(text, pattern));
+            }
             Console.ReadKey();
         }
 
