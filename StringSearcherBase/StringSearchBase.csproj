@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="ISearchAlgorithm.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultItem.cs" />
     <Compile Include="StringSearchAlgorithm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

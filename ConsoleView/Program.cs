@@ -11,21 +11,23 @@ namespace ConsoleView
     {
         static void Main(string[] args)
         {
-            char[] s = "as F  a sf asf fas".ToLower().Replace(" ", "").ToCharArray();
-            char[] key = "F   as".ToLower().Replace(" ","").ToCharArray();
-            var searcher = new AlgorithmKmp();
-            Console.WriteLine("as F  a sf asf fas".IndexOf("a s"));
+            string text = "    1a    21   212";
+            string pattern = "1 A 2";
+            ISearchAlgorithm searcher = new StringSearchWhitespaceAndCaseInsensitive();
+            WriteResult(searcher.SearchAll(text, pattern));
             Console.ReadKey();
         }
 
-        static public string IntArrayToString(this int[] array)
+        static void WriteResult(ResultItem result)
         {
-            StringBuilder builder = new StringBuilder();
-            foreach (var item in array)
+            if (result != null) Console.WriteLine("{0}: {1}", result.Index, result.Value);
+        }
+        static void WriteResult(IEnumerable<ResultItem> results)
+        {
+            foreach (var result in results)
             {
-                builder.Append(item).Append("  ");
+                WriteResult(result);
             }
-            return builder.ToString();
         }
     }
 }

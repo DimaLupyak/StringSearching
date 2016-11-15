@@ -7,16 +7,12 @@ using System.ComponentModel;
 
 namespace StringSearch
 {
-    // Algorithm KMP will have computed an int[] after pre-procesing,
-    // but requires the entire text (char[] s) to count prefix occurences.
-    // Pre-processing KMP and then counting from result int[] would be O(n^2)
-
-    [Description("Knuth–Morris–Pratt")]
+    [Description("Knuth–Morris–Pratt, Identical string searching")]
     [StringSearchAlgorithm("Knuth–Morris–Pratt algorithm", Version = "1.0")]
-    public class AlgorithmKmp : ISearchAlgorithm<int[]>
+    public class AlgorithmKmp : ISearchAlgorithm
     {
         #region ISearchAlgorithm
-        public int Search(char[] s, char[] key)
+        public ResultItem Search(string s, string key)
         {
             int n = s.Length;
             int m = key.Length;
@@ -31,7 +27,7 @@ namespace StringSearch
                     j++;
                     i++;
                 }
-                if (j == m) { return i - m; }
+                if (j == m) { return new ResultItem(i - m, key); }
                 else if (i < n && s[i] != key[j]) // mismatch after j matches
                 {
                     // Skip lps[j - 1] chars; they will match
@@ -39,10 +35,10 @@ namespace StringSearch
                     else i++;
                 }
             }
-            return n; // no matches found
+            return null; // no matches found
         }
 
-        public int[] SearchAll(char[] s, char[] key)
+        public IEnumerable<ResultItem> SearchAll(string s, string key)
         {
             int n = s.Length;
             int m = key.Length;
@@ -50,7 +46,7 @@ namespace StringSearch
 
             int i = 0; // position of current character in key
             int j = 0; // beginning of current match in S
-            var matchIndices = new List<int>();
+            var matchIndices = new List<ResultItem>();
             while (i < n)
             {
                 if (s[i] == key[j])
@@ -60,7 +56,7 @@ namespace StringSearch
                 }
                 if (j == m)
                 {
-                    matchIndices.Add(i - m);
+                    matchIndices.Add(new ResultItem(i - m, key));
                     j = pmt[j - 1];
                 }
                 else if (i < n && s[i] != key[j]) // mismatch after j matches
@@ -70,17 +66,13 @@ namespace StringSearch
                     else i++;
                 }
             }
-            return matchIndices.ToArray();
+            return matchIndices;
         }
-
         #endregion
-
         #region Implementation
-
         // Standard Knuth-Morris-Pratt algorithm for building
-        // the partial match table. Used in Search() method, 
-        // and also as the basis for writing CountedPmt().
-        private int[] PartialMatchTable(char[] s)
+        // the partial match table. 
+        private int[] PartialMatchTable(string s)
         {
             int n = s.Length;
             var pmt = new int[n];

@@ -8,7 +8,7 @@ namespace StringSearch
 {
     // Algorithm Z will have computed an int[] after completing, 
     // then requires the int[] computed by Z to count prefixes.
-    public class AlgorithmZ : ISearchAlgorithm<int[]>
+    public class AlgorithmZ 
     {
         private static T[] Concat<T>(T[] t1, T[] t2)
         {

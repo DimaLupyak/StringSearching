@@ -1,10 +1,10 @@
-﻿namespace StringSearch
+﻿using System.Collections.Generic;
+namespace StringSearch
 {
-    // T is the type of the object produced by algorithm pre-processing
-    public interface ISearchAlgorithm<out T>
+    public interface ISearchAlgorithm
     {
-        int Search(char[] s, char[] key);
+        ResultItem Search(string text, string pattern);
 
-        int[] SearchAll(char[] s, char[] key);
+        IEnumerable<ResultItem> SearchAll(string text, string pattern);
     }
 }
