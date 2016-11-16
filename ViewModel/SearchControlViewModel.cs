@@ -12,14 +12,27 @@ namespace ViewModel
         {
             AlgorithmItem = algorithm;
             Results = new ObservableCollection<ResultItem>();
+            IsActive = true;
         }      
 
         #endregion
 
         #region Properties
-
         public SearchAlgorithmItem AlgorithmItem { get; set; }
         public ObservableCollection<ResultItem> Results { get; private set; }
+        public bool isActive;
+        public bool IsActive 
+        {
+            get
+            {
+            return isActive;
+            }
+            set
+            {
+                isActive = value;
+                OnPropertyChanged("IsActive");
+            }
+        }
         #endregion
 
         public void UpdateResults(string text, string pattern)

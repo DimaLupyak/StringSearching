@@ -5,14 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBlock Text="{Binding AlgorithmItem.Name}"></TextBlock>
-        <ItemsControl ItemsSource="{Binding Results}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text = "{Binding Value}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </StackPanel>
+    <Expander  
+              IsExpanded="True" Style="{DynamicResource ExpanderStyle}" Margin="0,0,0,5">
+        <Expander.Header>
+            <DockPanel ToolTip="{Binding AlgorithmItem.Description}">
+                <TextBlock DockPanel.Dock="Left" Text="{Binding AlgorithmItem.Name}"  HorizontalAlignment="Left" Foreground="#FFDEDEDE" VerticalAlignment="Center" Padding="14,0,0,0"/>
+                <TextBlock DockPanel.Dock="Right" Text="{Binding AlgorithmItem.Version}" HorizontalAlignment="Right" Foreground="#2AFFFFFF" VerticalAlignment="Center"/>
+                <TextBlock DockPanel.Dock="Right" Text="v." HorizontalAlignment="Right" Foreground="#2AFFFFFF" VerticalAlignment="Center"/>
+            </DockPanel>
+        </Expander.Header>
+        <DockPanel>
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#7FFFFFFF" Offset="0"/>
+                    <GradientStop Offset="1" Color="#7F300101"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+            <ItemsControl ItemsSource="{Binding Results}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource SellectedCaptionBrush}" BorderBrush="#FFCF9C9C">
+                            <TextBlock Text = "{Binding Value}" Margin="5,2" Foreground="#FFF3EEEE" FontSize="14"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </DockPanel>
+    </Expander>
 </UserControl>

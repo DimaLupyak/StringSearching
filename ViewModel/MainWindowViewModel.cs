@@ -4,6 +4,8 @@ using Microsoft.Win32;
 using System.Windows.Input;
 using System.Threading;
 using System;
+using System.Windows.Threading;
+using System.Windows;
 
 namespace ViewModel
 {
@@ -21,6 +23,7 @@ namespace ViewModel
             set
             {
                 text = value;
+
                 UpdateResults();
                 OnPropertyChanged("Text");
             }
@@ -34,7 +37,7 @@ namespace ViewModel
             }
             set
             {
-                pattern = value;
+                pattern = value;                
                 UpdateResults();
                 OnPropertyChanged("Pattern");
             }
@@ -43,8 +46,8 @@ namespace ViewModel
         #region Constructor
         public MainWindowViewModel()
         {
-            LoadTextFromFileCommand = new Command(a => LoadTextFromFile());
-            CloseWindowCommand = new Command(arg => Environment.Exit(0));
+            LoadTextFromFileCommand = new Command(a => new Thread(LoadTextFromFile).Start());
+            CloseWindowCommand = new Command(a => Environment.Exit(0));
             SearchControlViewModels = new ObservableCollection<SearchControlViewModel>();
             foreach (var item in SearchAlgorithmsManager.Instance.GetAll())
             {
@@ -56,17 +59,20 @@ namespace ViewModel
         #region Methods
         public void UpdateResults()
         {
-            if (text != null && pattern != null)
-            foreach (var item in SearchControlViewModels)
-            {
-                item.UpdateResults(text, pattern);
-            }
+            if (text != null && pattern != null && pattern.Trim()!="")
+                foreach (var item in SearchControlViewModels)
+                {
+                    try
+                    {
+                        item.UpdateResults(text, pattern); 
+                    }
+                    catch(Exception){}       
+                }
         }
 
         public void LoadTextFromFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "txt files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
             {
                 Text = DataProvider.GetStringFromFile(openFileDialog.FileName);
