@@ -48,7 +48,10 @@
                 </TextBox>
                 <TextBlock Text="Input data:" DockPanel.Dock="Top"/>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" DockPanel.Dock="Bottom">
-                    <TextBox Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                    <TextBox Name="InputDataTextBox" 
+                             Text="{Binding Text, UpdateSourceTrigger=PropertyChanged}"
+                             
+                             />
                 </ScrollViewer>
             </DockPanel>
             <GridSplitter Width="5" Grid.Column="1" HorizontalAlignment="Stretch"/>

@@ -29,9 +29,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderThickness="1" CornerRadius="3" Background="{DynamicResource SellectedCaptionBrush}" BorderBrush="#FFCF9C9C">
-                            <TextBlock Text = "{Binding Value}" Margin="5,2" Foreground="#FFF3EEEE" FontSize="14"/>
-                        </Border>
+                        <Button Content = "{Binding Value}" Margin="5,2"  FontSize="14" Click="ResultItemClick"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

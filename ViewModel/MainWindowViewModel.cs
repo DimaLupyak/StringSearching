@@ -6,11 +6,14 @@ using System.Threading;
 using System;
 using System.Windows.Threading;
 using System.Windows;
+using StringSearch;
 
 namespace ViewModel
 {
     public class MainWindowViewModel : AViewModel
     {
+        public event EventHandler<ResultItemEventArgs> ResultItemUpated;
+
         #region Proerties
         public ObservableCollection<SearchControlViewModel> SearchControlViewModels { get; private set; }
         public string text;
@@ -42,6 +45,23 @@ namespace ViewModel
                 OnPropertyChanged("Pattern");
             }
         }
+
+        public ResultItem lastClickedResultItem;
+        public ResultItem LastClickedResultItem
+        {
+            get
+            {
+                return lastClickedResultItem;
+            }
+            set
+            {
+                lastClickedResultItem = value;
+                if (ResultItemUpated != null)
+                    ResultItemUpated(this, new ResultItemEventArgs(lastClickedResultItem));
+                OnPropertyChanged("LastClickedResultItem");
+            }
+        }
+
         #endregion
         #region Constructor
         public MainWindowViewModel()
@@ -51,7 +71,9 @@ namespace ViewModel
             SearchControlViewModels = new ObservableCollection<SearchControlViewModel>();
             foreach (var item in SearchAlgorithmsManager.Instance.GetAll())
             {
-                SearchControlViewModels.Add(new SearchControlViewModel(item));
+                var searchControl = new SearchControlViewModel(item);
+                searchControl.ResultItemClicked += (o, e) => LastClickedResultItem = new ResultItem(e.Index, e.Value);
+                SearchControlViewModels.Add(searchControl);
             }
 
         }

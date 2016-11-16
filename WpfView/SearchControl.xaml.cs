@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StringSearch;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace WpfView
 {
@@ -23,6 +25,14 @@ namespace WpfView
         public SearchControl()
         {
             InitializeComponent();
+        }
+    
+        private void ResultItemClick(object sender, RoutedEventArgs e)
+        {
+            var viewModel = DataContext as SearchControlViewModel;
+            var btn = sender as Button;
+            var result = btn.DataContext as ResultItem;
+            viewModel.LastClickedResultItem = result;
         }
     }
 }

@@ -1,18 +1,20 @@
 ﻿using Logic;
 using StringSearch;
+using System;
 using System.Collections.ObjectModel;
 
 namespace ViewModel
 {
     public class SearchControlViewModel : AViewModel
     {
+        public event EventHandler<ResultItemEventArgs> ResultItemClicked;
+
          #region Constructor
 
         public SearchControlViewModel(SearchAlgorithmItem algorithm)
         {
             AlgorithmItem = algorithm;
             Results = new ObservableCollection<ResultItem>();
-            IsActive = true;
         }      
 
         #endregion
@@ -20,17 +22,19 @@ namespace ViewModel
         #region Properties
         public SearchAlgorithmItem AlgorithmItem { get; set; }
         public ObservableCollection<ResultItem> Results { get; private set; }
-        public bool isActive;
-        public bool IsActive 
+        public ResultItem lastClickedResultItem;
+        public ResultItem LastClickedResultItem 
         {
             get
             {
-            return isActive;
+                return lastClickedResultItem;
             }
             set
             {
-                isActive = value;
-                OnPropertyChanged("IsActive");
+                lastClickedResultItem = value;
+                if (ResultItemClicked != null)
+                    ResultItemClicked(this, new ResultItemEventArgs(lastClickedResultItem));
+                OnPropertyChanged("LastClickedResultItem");
             }
         }
         #endregion
@@ -42,6 +46,17 @@ namespace ViewModel
             {
                 Results.Add(item);
             }
+        }
+    }
+
+    public class ResultItemEventArgs : EventArgs
+    {
+        public int Index { get; private set; }
+        public string Value { get; private set; }
+        public ResultItemEventArgs(ResultItem result)
+        {
+            Index = result.Index;
+            Value = result.Value;
         }
     }
 }

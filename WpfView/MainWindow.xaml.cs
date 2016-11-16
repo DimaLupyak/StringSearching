@@ -24,7 +24,22 @@ namespace WpfView
         public MainWindow()
         {
             InitializeComponent();
-            this.Loaded += (e, o) => this.DataContext = new MainWindowViewModel();
+            this.Loaded += (e, o) =>
+                {
+                    var viewModel = new MainWindowViewModel();
+                    viewModel.ResultItemUpated += OnResultItemUpated;
+                    this.DataContext = viewModel;
+                };
         }
+
+
+
+        private void OnResultItemUpated(object sender, ResultItemEventArgs e)
+        {
+            InputDataTextBox.Select(e.Index, e.Value.Length);
+            DependencyObject focusScope = FocusManager.GetFocusScope(InputDataTextBox);
+            FocusManager.SetFocusedElement(focusScope, InputDataTextBox);
+        }
+
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 namespace StringSearch
 {
     public class ResultItem

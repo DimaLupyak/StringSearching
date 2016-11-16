@@ -117,6 +117,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StringSearcherBase\StringSearchBase.csproj">
+      <Project>{49da10c6-e3a7-4a28-92f4-2bab0d46238e}</Project>
+      <Name>StringSearchBase</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">
       <Project>{4210c8d3-93f4-448e-9c8b-e55511605032}</Project>
       <Name>ViewModel</Name>
