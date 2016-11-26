@@ -29,7 +29,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content = "{Binding Value}" Margin="5,2"  FontSize="14" Click="ResultItemClick"/>
+                        <Button Content = "{Binding Value}" Margin="2,2"  FontSize="14" Click="ResultItemClick" MinWidth="20"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
